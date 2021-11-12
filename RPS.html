@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+ <h1>Welcome to Rock Paper Scissors</h1>
+ <p>If you wish to play, open up the console and see your match!</p> 
+ <p> After 5 rounds a winner will be determined. If you wish to play again just refresh the page and click to play!</p>
+ 
+ <button onclick='result()' type='button'>Click me to make your choice!</button>
+ <script>
+  
+  function cpuPlay () {
+   let array = ['Rock', 'Paper', 'Scissors'];
+   let random = Math.floor(Math.random()*array.length);
+   return array[random];
+  }
+  
+  let roundsPlayed = (0);
+  let userScore = (0);
+  let cpuScore = (0);     
+
+  function result() {
+  let userChoice = prompt('Rock, Paper, Scissors, take your pick');
+  const cpuSelection = cpuPlay();
+ 
+  
+  
+  //These conditional statements determine the winner based on input and output console.log message with the winner of the round and increment to the round number and to either the user or cpu score
+   if (userChoice.toLowerCase() === 'rock' && cpuSelection === 'Paper') {
+     alert('Paper beats rock, you lose'),  console.log('Userscore',userScore, 'Cpuscore',++cpuScore, 'Round', ++roundsPlayed);
+   } else if (userChoice.toLowerCase() === 'rock' && cpuSelection === 'Rock') {
+     alert('Rock and rock makes a tie!'),  console.log('Userscore',userScore, 'Cpuscore',cpuScore, 'Round', ++roundsPlayed);
+   } else if (userChoice.toLowerCase() === 'rock' && cpuSelection === 'Scissors') { 
+     alert('Rock beats scissors, you win!'),  console.log('Userscore',++userScore, 'Cpuscore', 'Round', ++roundsPlayed);
+   } else if (userChoice.toLowerCase()  === 'paper' && cpuSelection === 'Paper') {
+     alert('Paper and paper makes no winner'),  console.log('Userscore',userScore, 'Cpuscore',cpuScore, 'Round', ++roundsPlayed);
+   } else if (userChoice.toLowerCase() === 'paper' && cpuSelection === 'Rock') {
+     alert('Paper beats rock, you win!'),  console.log('Userscore',++userScore, 'Cpuscore', 'Round', ++roundsPlayed);
+   } else if (userChoice.toLowerCase() === 'paper' && cpuSelection === 'Scissors') {
+     alert('Paper gets scissored, you lose!'),  console.log('Userscore',userScore, 'Cpuscore',++cpuScore, 'Round', ++roundsPlayed);
+   } else if (userChoice.toLowerCase() === 'scissors' && cpuSelection === 'Paper') {
+     alert('Paper gets scissored, you win!'),  console.log('Userscore',++userScore, 'Cpuscore', 'Round', ++roundsPlayed);
+   } else if (userChoice.toLowerCase() === 'scissors' && cpuSelection === 'Rock') {
+     alert('Scissors get stoned, you lose!'),  console.log('Userscore',userScore, 'Cpuscore',++cpuScore, 'Round', ++roundsPlayed);
+   } else if (userChoice.toLowerCase() === 'scissors' && cpuSelection === 'Scissors') { 
+     alert('Scissors can\'t beat scissors, tie game!'),  console.log('Userscore',userScore, 'Cpuscore',cpuScore, 'Round', ++roundsPlayed);
+   } else {
+     alert('You only got three options, pal!');
+   }
+
+  //These conditional statements output a winning or losing message at the end of 5 rounds played
+   if (roundsPlayed === 5 && cpuScore > userScore) {
+      console.log('The cpu was better this time, try again!');
+   } else if (roundsPlayed === 5 && cpuScore < userScore) {
+     console.log('Congratulations, you are the winner!');
+   } else if (roundsPlayed === 5 && cpuScore === userScore) {
+     console.log('You are tied!')
+   }
+  }
+    </script>
+</body>
+</html>
